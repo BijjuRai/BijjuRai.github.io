@@ -548,6 +548,14 @@
       border-radius: 100px;
       transition: all 0.2s;
       letter-spacing: 0.01em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-link i {
+      font-size: 13px;
+      color: var(--accent);
     }
 
     .nav-link:hover {
@@ -572,6 +580,10 @@
       letter-spacing: 0.02em;
     }
 
+    .nav-cta i {
+      font-size: 14px;
+    }
+
     .nav-cta:hover {
       background: var(--accent-muted);
       transform: translateY(-2px);
@@ -589,12 +601,16 @@
       font-size: 16px;
     }
 
+    .mobile-toggle i {
+      font-size: 18px;
+    }
+
     .mobile-nav {
       display: none;
       position: fixed;
       inset: 0;
-      z-index: 499;
-      background: rgba(255, 255, 255, 0.96);
+      z-index: 600;
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(20px);
       flex-direction: column;
       align-items: center;
@@ -612,6 +628,15 @@
       font-weight: 600;
       color: var(--text-primary);
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mobile-nav a i {
+      color: var(--accent);
+      font-size: 24px;
+      width: 30px;
     }
 
     .mobile-nav a:hover {
@@ -627,6 +652,18 @@
       color: var(--text-secondary);
       font-size: 28px;
       cursor: pointer;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.2s;
+    }
+
+    .mobile-close:hover {
+      background: rgba(168, 85, 247, 0.1);
+      color: var(--accent);
     }
 
     /* ───── SECTIONS WRAPPER ───── */
@@ -1916,7 +1953,6 @@
         gap: 40px;
       }
 
-      /* IMAGE FIRST ON MOBILE */
       .hero-right {
         order: 1;
         max-width: 380px;
@@ -2092,23 +2128,22 @@
   <!-- Mobile Nav -->
   <div class="mobile-nav" id="mobileNav">
     <button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button>
-    <a href="#hero" onclick="closeMobileNav()">Home</a>
-    <a href="#work" onclick="closeMobileNav()">Work</a>
-    <a href="#tools" onclick="closeMobileNav()">Tools</a>
-    <a href="#contact" onclick="closeMobileNav()">Contact</a>
-    <a href="https://sudamhub.com/" target="_blank" style="color:var(--accent)">Our Team ↗</a>
+    <a href="#hero" onclick="closeMobileNav()"><i class="fas fa-home"></i> Home</a>
+    <a href="#work" onclick="closeMobileNav()"><i class="fas fa-briefcase"></i> Work</a>
+    <a href="#tools" onclick="closeMobileNav()"><i class="fas fa-tools"></i> Tools</a>
+    <a href="#contact" onclick="closeMobileNav()"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="https://sudamhub.com/" target="_blank" style="color:var(--accent)"><i class="fas fa-users"></i> Our Team ↗</a>
   </div>
 
   <!-- Nav -->
   <nav id="navbar">
     <div class="nav-inner">
-      <a href="#hero" class="nav-logo"><span class="logo-dot"></span>BijayHub
-      </a>
+      <a href="#hero" class="nav-logo"><span class="logo-dot"></span>BijayHub</a>
       <div class="nav-links">
-        <a href="#hero" class="nav-link">Home</a>
-        <a href="#work" class="nav-link">Work</a>
-        <a href="#tools" class="nav-link">Tools</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#hero" class="nav-link"><i class="fas fa-home"></i> Home</a>
+        <a href="#work" class="nav-link"><i class="fas fa-briefcase"></i> Work</a>
+        <a href="#tools" class="nav-link"><i class="fas fa-tools"></i> Tools</a>
+        <a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
       </div>
       <div style="display:flex;align-items:center;gap:12px">
         <a class="nav-cta" href="https://sudamhub.com/" target="_blank"><i class="fas fa-users"></i> Our Team</a>
@@ -2205,8 +2240,7 @@
             </div>
 
             <div class="photo-switch-hint">
-              <i class="fas fa-hand-pointer"></i>
-              <span>Oink Oink</span>
+             
             </div>
           </div>
         </div>
@@ -2218,10 +2252,9 @@
       <div class="marquee-track" id="marqueeTrack"></div>
     </div>
 
-    <!-- ─── STATS (Kept intact but hidden since stats are now in hero) ─── -->
+    <!-- ─── STATS ─── -->
     <section class="section" style="padding-top:0; padding-bottom:40px">
       <div class="section-wrap">
-        <!-- Stats moved to hero, so this section is now empty or can be used for something else -->
       </div>
     </section>
 
@@ -2384,9 +2417,44 @@
       });
 
       // ── MOBILE NAV ──
-      document.getElementById('mobileToggle').onclick = () => document.getElementById('mobileNav').classList.add('open');
-      document.getElementById('mobileClose').onclick = () => document.getElementById('mobileNav').classList.remove('open');
-      window.closeMobileNav = () => document.getElementById('mobileNav').classList.remove('open');
+      const mobileToggle = document.getElementById('mobileToggle');
+      const mobileNav = document.getElementById('mobileNav');
+      const mobileClose = document.getElementById('mobileClose');
+
+      mobileToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        mobileNav.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+
+      mobileClose.addEventListener('click', function(e) {
+        e.preventDefault();
+        mobileNav.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+
+      // Close mobile nav when clicking on a link
+      const mobileNavLinks = mobileNav.querySelectorAll('a');
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          mobileNav.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+
+      // Close mobile nav when clicking outside
+      mobileNav.addEventListener('click', function(e) {
+        if (e.target === mobileNav) {
+          mobileNav.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+
+      window.closeMobileNav = function() {
+        mobileNav.classList.remove('open');
+        document.body.style.overflow = '';
+      };
 
       // ── MARQUEE ──
       const items = ['UI Design', 'Brand Identity', 'Typography', 'Visual Storytelling', 'Figma', 'Illustration', 'User Experience', 'Creative Direction', 'Graphic Design', 'Color Theory'];
@@ -2447,10 +2515,11 @@
         setTimeout(() => { img.src = d.image; img.alt = d.title; document.getElementById('lbCaption').textContent = d.title; img.style.opacity = '1'; }, 150);
       }
 
-      document.getElementById('lbClose').onclick = closeLightbox;
-      document.getElementById('lightbox').onclick = e => { if (e.target === document.getElementById('lightbox')) closeLightbox(); };
-      document.getElementById('lbPrev').onclick = e => { e.stopPropagation(); lbStep(-1); };
-      document.getElementById('lbNext').onclick = e => { e.stopPropagation(); lbStep(1); };
+      document.getElementById('lbClose').addEventListener('click', closeLightbox);
+      document.getElementById('lightbox').addEventListener('click', e => { if (e.target === document.getElementById('lightbox')) closeLightbox(); });
+      document.getElementById('lbPrev').addEventListener('click', e => { e.stopPropagation(); lbStep(-1); });
+      document.getElementById('lbNext').addEventListener('click', e => { e.stopPropagation(); lbStep(1); });
+      
       document.addEventListener('keydown', e => {
         if (!document.getElementById('lightbox').classList.contains('open')) return;
         if (e.key === 'Escape') closeLightbox();
