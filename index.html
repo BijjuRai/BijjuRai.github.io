@@ -18,6 +18,9 @@
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>" />
 
+  <!-- AOS Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -34,7 +37,7 @@
       box-sizing: border-box;
     }
 
-    :root {
+     :root {
       --bg-light: #f9f5ff;
       --surface: #ffffff;
       --text-primary: #1e1127;
@@ -49,6 +52,7 @@
       --glass: rgba(255, 255, 255, 0.8);
       --shadow-sm: 0 8px 20px rgba(168, 85, 247, 0.08);
     }
+
 
     html {
       scroll-behavior: smooth;
@@ -94,8 +98,8 @@
       font-size: 2.2rem;
       user-select: none;
       animation: floatAround 20s infinite ease-in-out;
-      opacity: 0.4;
-      filter: drop-shadow(0 4px 6px rgba(168, 85, 247, 0.1));
+      opacity: 0.3;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.05));
     }
 
     .floating-emoji:nth-child(1) {
@@ -201,9 +205,9 @@
 
     .cloud {
       position: absolute;
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.5);
       border-radius: 100px;
-      box-shadow: 0 8px 20px rgba(168, 85, 247, 0.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
       backdrop-filter: blur(4px);
       animation: cloudDrift 40s linear infinite;
     }
@@ -357,7 +361,7 @@
       position: absolute;
       color: #f472b6;
       font-size: 1.6rem;
-      opacity: 0.25;
+      opacity: 0.2;
       animation: heartFloat 18s infinite ease-in-out;
     }
 
@@ -399,7 +403,7 @@
       inset: 0;
       z-index: 1;
       pointer-events: none;
-      opacity: 0.02;
+      opacity: 0.01;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     }
 
@@ -409,8 +413,8 @@
       z-index: 0;
       pointer-events: none;
       background-image:
-        linear-gradient(rgba(168, 85, 247, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(168, 85, 247, 0.03) 1px, transparent 1px);
+        linear-gradient(rgba(45, 55, 72, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(45, 55, 72, 0.02) 1px, transparent 1px);
       background-size: 80px 80px;
     }
 
@@ -446,14 +450,14 @@
     .loader-bar-track {
       width: 180px;
       height: 3px;
-      background: rgba(168, 85, 247, 0.2);
+      background: rgba(45, 55, 72, 0.2);
       border-radius: 3px;
       overflow: hidden;
     }
 
     .loader-bar {
       height: 100%;
-      background: linear-gradient(90deg, var(--accent), #f472b6);
+      background: linear-gradient(90deg, var(--accent), #718096);
       border-radius: 3px;
       width: 0%;
       animation: loadProgress 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
@@ -482,11 +486,11 @@
     }
 
     nav.scrolled {
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-soft);
       padding: 12px 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
     }
 
     .nav-inner {
@@ -560,7 +564,7 @@
 
     .nav-link:hover {
       color: var(--accent);
-      background: rgba(168, 85, 247, 0.06);
+      background: rgba(45, 55, 72, 0.06);
     }
 
     .nav-cta {
@@ -587,7 +591,7 @@
     .nav-cta:hover {
       background: var(--accent-muted);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(168, 85, 247, 0.3);
+      box-shadow: 0 8px 24px rgba(45, 55, 72, 0.3);
     }
 
     .mobile-toggle {
@@ -662,7 +666,7 @@
     }
 
     .mobile-close:hover {
-      background: rgba(168, 85, 247, 0.1);
+      background: rgba(45, 55, 72, 0.1);
       color: var(--accent);
     }
 
@@ -672,7 +676,7 @@
       z-index: 2;
     }
 
-    /* ───── REDESIGNED HERO SECTION ───── */
+    /* ───── HERO SECTION ───── */
     #hero {
       min-height: 100vh;
       display: flex;
@@ -698,7 +702,7 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: rgba(168, 85, 247, 0.1);
+      background: rgba(45, 55, 72, 0.08);
       border: 1.5px solid var(--border-light);
       padding: 7px 18px;
       border-radius: 100px;
@@ -708,8 +712,6 @@
       color: var(--accent);
       letter-spacing: 0.5px;
       backdrop-filter: blur(8px);
-      animation: fadeUp 0.8s 2s ease forwards;
-      opacity: 0;
     }
 
     .hero-badge i {
@@ -723,8 +725,6 @@
       letter-spacing: -0.03em;
       color: var(--text-primary);
       margin-bottom: 18px;
-      animation: fadeUp 0.8s 2.1s ease forwards;
-      opacity: 0;
     }
 
     .hero-name .highlight {
@@ -740,7 +740,7 @@
       left: 0;
       right: 0;
       height: 10px;
-      background: rgba(168, 85, 247, 0.15);
+      background: rgba(45, 55, 72, 0.1);
       border-radius: 20px;
       z-index: -1;
     }
@@ -753,8 +753,6 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      animation: fadeUp 0.8s 2.15s ease forwards;
-      opacity: 0;
     }
 
     .hero-title span {
@@ -773,16 +771,12 @@
       margin-bottom: 32px;
       font-weight: 500;
       max-width: 540px;
-      animation: fadeUp 0.8s 2.2s ease forwards;
-      opacity: 0;
     }
 
     .hero-stats {
       display: flex;
       gap: 36px;
       margin-bottom: 36px;
-      animation: fadeUp 0.8s 2.25s ease forwards;
-      opacity: 0;
     }
 
     .hero-stat-item {
@@ -809,8 +803,6 @@
       align-items: center;
       gap: 14px;
       flex-wrap: wrap;
-      animation: fadeUp 0.8s 2.3s ease forwards;
-      opacity: 0;
     }
 
     .btn-primary {
@@ -827,13 +819,13 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      box-shadow: 0 8px 24px rgba(168, 85, 247, 0.25);
+      box-shadow: 0 8px 24px rgba(45, 55, 72, 0.2);
     }
 
     .btn-primary:hover {
       background: var(--accent-muted);
       transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(168, 85, 247, 0.35);
+      box-shadow: 0 12px 32px rgba(45, 55, 72, 0.3);
     }
 
     .btn-outline {
@@ -854,15 +846,12 @@
 
     .btn-outline:hover {
       border-color: var(--accent);
-      background: rgba(168, 85, 247, 0.04);
+      background: rgba(45, 55, 72, 0.04);
       transform: translateY(-3px);
     }
 
-    /* New Hero Right - Modern Photo Design */
     .hero-right {
       position: relative;
-      animation: fadeIn 1s 2.4s ease forwards;
-      opacity: 0;
     }
 
     .photo-container {
@@ -877,7 +866,7 @@
       border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
       overflow: hidden;
       border: 3px solid var(--accent-light);
-      box-shadow: 0 25px 50px -12px rgba(168, 85, 247, 0.25);
+      box-shadow: 0 25px 50px -12px rgba(45, 55, 72, 0.2);
       animation: morphShape 8s ease-in-out infinite;
     }
 
@@ -917,7 +906,7 @@
       background: var(--surface);
       border-radius: 14px;
       padding: 14px 18px;
-      box-shadow: 0 20px 40px rgba(168, 85, 247, 0.12);
+      box-shadow: 0 20px 40px rgba(45, 55, 72, 0.1);
       border: 1.5px solid var(--border-soft);
       backdrop-filter: blur(8px);
       display: flex;
@@ -964,7 +953,7 @@
       width: 36px;
       height: 36px;
       border-radius: 10px;
-      background: rgba(168, 85, 247, 0.1);
+      background: rgba(45, 55, 72, 0.08);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1035,64 +1024,6 @@
       }
     }
 
-    .photo-switch-hint {
-      position: absolute;
-      bottom: -55px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      background: var(--surface);
-      padding: 7px 18px;
-      border-radius: 100px;
-      border: 1.5px solid var(--border-soft);
-      font-size: 12px;
-      color: var(--text-secondary);
-      font-weight: 500;
-      white-space: nowrap;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .photo-switch-hint i {
-      color: var(--accent);
-      animation: pointAnimation 1.5s ease-in-out infinite;
-    }
-
-    @keyframes pointAnimation {
-
-      0%,
-      100% {
-        transform: translateX(0);
-      }
-
-      50% {
-        transform: translateX(5px);
-      }
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(28px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-
     /* ───── MARQUEE ───── */
     .marquee-section {
       border-top: 2px solid var(--border-soft);
@@ -1100,7 +1031,7 @@
       padding: 20px 0;
       overflow: hidden;
       white-space: nowrap;
-      background: rgba(168, 85, 247, 0.02);
+      background: rgba(45, 55, 72, 0.02);
     }
 
     .marquee-track {
@@ -1190,54 +1121,6 @@
       line-height: 1.1;
     }
 
-    /* ───── STATS ───── */
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2px;
-      background: var(--border-soft);
-      border-radius: 24px;
-      overflow: hidden;
-    }
-
-    .stat-block {
-      background: var(--surface);
-      padding: 42px 28px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-      transition: background 0.3s;
-    }
-
-    .stat-block:hover {
-      background: #f3e8ff;
-    }
-
-    .stat-num {
-      font-family: 'Fredoka', sans-serif;
-      font-size: clamp(40px, 4.5vw, 56px);
-      font-weight: 700;
-      color: var(--text-primary);
-      line-height: 1;
-    }
-
-    .stat-num span {
-      color: var(--accent);
-    }
-
-    .stat-icon {
-      color: var(--accent);
-      font-size: 18px;
-      margin-bottom: 4px;
-    }
-
-    .stat-label {
-      font-size: 14px;
-      color: var(--text-secondary);
-      font-weight: 500;
-    }
-
     /* ───── WORK GRID ───── */
     .work-filter {
       display: flex;
@@ -1268,7 +1151,7 @@
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      gap: 24px;
     }
 
     .project-card {
@@ -1277,21 +1160,21 @@
       border-radius: 22px;
       overflow: hidden;
       cursor: pointer;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       box-shadow: var(--shadow-sm);
     }
 
     .project-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-10px);
       border-color: var(--accent-light);
-      box-shadow: 0 28px 48px rgba(168, 85, 247, 0.12);
+      box-shadow: 0 28px 48px rgba(45, 55, 72, 0.1);
     }
 
     .project-img-wrap {
       position: relative;
       overflow: hidden;
       aspect-ratio: 4/3;
-      background: #f1e5ff;
+      background: #e2e8f0;
     }
 
     .project-img-wrap img {
@@ -1308,7 +1191,7 @@
     .project-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(255, 255, 255, 0.9) 0%, transparent 60%);
+      background: linear-gradient(to top, rgba(255, 255, 255, 0.95) 0%, transparent 60%);
       opacity: 0;
       transition: opacity 0.3s;
       display: flex;
@@ -1366,7 +1249,7 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      margin-top: 48px;
+      margin-top: 56px;
       flex-wrap: wrap;
     }
 
@@ -1449,7 +1332,7 @@
     .tool-card:hover {
       border-color: var(--accent-light);
       transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 24px 48px rgba(168, 85, 247, 0.1);
+      box-shadow: 0 24px 48px rgba(45, 55, 72, 0.1);
     }
 
     .tool-icon-wrap {
@@ -1460,13 +1343,13 @@
       align-items: center;
       justify-content: center;
       font-size: 32px;
-      background: rgba(168, 85, 247, 0.06);
+      background: rgba(45, 55, 72, 0.04);
       border: 2px solid var(--border-soft);
       transition: background 0.3s;
     }
 
     .tool-card:hover .tool-icon-wrap {
-      background: rgba(168, 85, 247, 0.15);
+      background: rgba(45, 55, 72, 0.1);
       border-color: var(--accent-light);
     }
 
@@ -1535,11 +1418,12 @@
       font-size: 15px;
       color: var(--text-primary);
       font-weight: 600;
-      transition: color 0.2s;
+      transition: all 0.3s;
     }
 
     .service-row:hover {
       color: var(--accent);
+      padding-left: 10px;
     }
 
     .service-row span {
@@ -1577,7 +1461,7 @@
 
     .contact-heading span {
       color: transparent;
-      -webkit-text-stroke: 2px rgba(168, 85, 247, 0.5);
+      -webkit-text-stroke: 2px rgba(45, 55, 72, 0.4);
     }
 
     .contact-sub {
@@ -1602,12 +1486,13 @@
       border-bottom: 2px solid var(--border-soft);
       text-decoration: none;
       color: var(--text-primary);
-      transition: color 0.2s;
+      transition: all 0.3s;
       cursor: pointer;
     }
 
     .contact-link-row:hover {
       color: var(--accent);
+      padding-left: 10px;
     }
 
     .contact-link-row:hover .cl-arrow {
@@ -1618,7 +1503,7 @@
       width: 48px;
       height: 48px;
       border-radius: 14px;
-      background: rgba(168, 85, 247, 0.06);
+      background: rgba(45, 55, 72, 0.04);
       border: 2px solid var(--border-soft);
       display: flex;
       align-items: center;
@@ -1679,7 +1564,7 @@
       height: 54px;
       border-radius: 18px;
       border: 2px solid var(--border-soft);
-      background: rgba(168, 85, 247, 0.03);
+      background: rgba(45, 55, 72, 0.02);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1701,7 +1586,7 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      background: rgba(168, 85, 247, 0.06);
+      background: rgba(45, 55, 72, 0.04);
       border: 2px solid var(--border-light);
       border-radius: 18px;
       padding: 18px 22px;
@@ -1788,12 +1673,11 @@
       position: fixed;
       inset: 0;
       z-index: 8000;
-      background: rgba(255, 245, 255, 0.96);
+      background: rgba(248, 249, 250, 0.98);
       backdrop-filter: blur(20px);
       display: none;
       align-items: center;
       justify-content: center;
-      animation: fadeIn 0.2s ease;
     }
 
     #lightbox.open {
@@ -1881,30 +1765,6 @@
       white-space: nowrap;
     }
 
-    /* ───── SCROLL REVEAL ───── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    .reveal-delay-1 {
-      transition-delay: 0.1s;
-    }
-
-    .reveal-delay-2 {
-      transition-delay: 0.2s;
-    }
-
-    .reveal-delay-3 {
-      transition-delay: 0.3s;
-    }
-
     /* ───── SCROLL PROGRESS BAR ───── */
     #progress-bar {
       position: fixed;
@@ -1912,7 +1772,7 @@
       left: 0;
       height: 3px;
       z-index: 9000;
-      background: linear-gradient(90deg, var(--accent), #f472b6);
+      background: var(--accent);
       width: 0%;
       transition: width 0.1s linear;
     }
@@ -1983,10 +1843,6 @@
 
       .hero-title {
         justify-content: center;
-      }
-
-      .stats-row {
-        grid-template-columns: repeat(2, 1fr);
       }
 
       .section-wrap {
@@ -2154,10 +2010,10 @@
 
   <div class="site">
 
-    <!-- ─── REDESIGNED HERO ─── -->
+    <!-- ─── HERO ─── -->
     <section id="hero">
       <div class="hero-inner">
-        <div class="hero-left">
+        <div class="hero-left" data-aos="fade-right" data-aos-duration="800" data-aos-delay="200">
           <div class="hero-badge">
             <i class="fas fa-sparkle"></i>
             UI/UX & Graphic Designer
@@ -2206,7 +2062,7 @@
           </div>
         </div>
 
-        <div class="hero-right">
+        <div class="hero-right" data-aos="fade-left" data-aos-duration="800" data-aos-delay="400">
           <div class="photo-container">
             <div class="photo-main-wrapper">
               <img class="photo-main" id="profileImg" src="images/biju.jpeg" alt="Bijay Rai — UI/UX & Graphic Designer"
@@ -2238,30 +2094,20 @@
               <div class="dot"></div>
               <div class="dot"></div>
             </div>
-
-            <div class="photo-switch-hint">
-             
-            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ─── MARQUEE ─── -->
-    <div class="marquee-section">
+    <div class="marquee-section" data-aos="fade-up" data-aos-duration="600">
       <div class="marquee-track" id="marqueeTrack"></div>
     </div>
-
-    <!-- ─── STATS ─── -->
-    <section class="section" style="padding-top:0; padding-bottom:40px">
-      <div class="section-wrap">
-      </div>
-    </section>
 
     <!-- ─── WORK ─── -->
     <section class="section" id="work" style="padding-top:60px">
       <div class="section-wrap">
-        <div class="section-header reveal">
+        <div class="section-header" data-aos="fade-up" data-aos-duration="600">
           <div>
             <div class="section-label">Selected Work</div>
             <h2 class="section-title">Featured Designs</h2>
@@ -2273,7 +2119,7 @@
             <button class="filter-btn" data-filter="ui">UI/UX</button>
           </div>
         </div>
-        <div class="projects-grid reveal reveal-delay-1" id="projectsGrid"></div>
+        <div class="projects-grid" id="projectsGrid"></div>
         <div class="pagination-wrap" id="paginationWrap"></div>
       </div>
     </section>
@@ -2281,18 +2127,18 @@
     <!-- ─── ABOUT STRIP ─── -->
     <div class="about-strip">
       <div class="about-inner">
-        <div class="reveal">
+        <div data-aos="fade-right" data-aos-duration="700">
           <p class="about-quote">Crafting experiences that are not just <em>beautiful</em>, but deeply
             <em>intentional</em>.</p>
         </div>
-        <div class="reveal reveal-delay-1">
+        <div data-aos="fade-left" data-aos-duration="700" data-aos-delay="200">
           <p class="about-text">Based in Dharan, Nepal. Open for freelance and collaboration worldwide. I specialise in
             visual identity, UI/UX, and creative direction — taking ideas from rough sketches to polished products.</p>
           <div class="services-list">
-            <div class="service-row"><strong>Visual Identity & Branding</strong> <span>Brand Design</span></div>
-            <div class="service-row"><strong>UI/UX Design</strong> <span>Web & Mobile</span></div>
-            <div class="service-row"><strong>Graphic Design</strong> <span>Print & Digital</span></div>
-            <div class="service-row"><strong>Creative Direction</strong> <span>Concept to Final</span></div>
+            <div class="service-row" data-aos="fade-up" data-aos-duration="500" data-aos-delay="300"><strong>Visual Identity & Branding</strong> <span>Brand Design</span></div>
+            <div class="service-row" data-aos="fade-up" data-aos-duration="500" data-aos-delay="400"><strong>UI/UX Design</strong> <span>Web & Mobile</span></div>
+            <div class="service-row" data-aos="fade-up" data-aos-duration="500" data-aos-delay="500"><strong>Graphic Design</strong> <span>Print & Digital</span></div>
+            <div class="service-row" data-aos="fade-up" data-aos-duration="500" data-aos-delay="600"><strong>Creative Direction</strong> <span>Concept to Final</span></div>
           </div>
         </div>
       </div>
@@ -2301,24 +2147,24 @@
     <!-- ─── TOOLS ─── -->
     <section class="section tools-section" id="tools">
       <div class="section-wrap">
-        <div class="section-header reveal"
+        <div class="section-header" data-aos="fade-up" data-aos-duration="600"
           style="justify-content:center;text-align:center;flex-direction:column;align-items:center;margin-bottom:0">
           <div class="section-label">Design Stack</div>
           <h2 class="section-title">Tools & Equipment</h2>
         </div>
-        <div class="tools-grid-row reveal reveal-delay-1">
-          <div class="tool-card">
-            <div class="tool-icon-wrap"><i class="fab fa-figma" style="color:#a855f7"></i></div>
+        <div class="tools-grid-row">
+          <div class="tool-card" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="100">
+            <div class="tool-icon-wrap"><i class="fab fa-figma" style="color:#2d3748"></i></div>
             <div class="tool-name">Figma</div>
             <div class="tool-sub">UI/UX Design</div>
           </div>
-          <div class="tool-card">
-            <div class="tool-icon-wrap"><i class="fas fa-palette" style="color:#a855f7"></i></div>
+          <div class="tool-card" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="200">
+            <div class="tool-icon-wrap"><i class="fas fa-palette" style="color:#2d3748"></i></div>
             <div class="tool-name">Canva</div>
             <div class="tool-sub">Visual Design</div>
           </div>
-          <div class="tool-card">
-            <div class="tool-icon-wrap"><i class="fas fa-draw-polygon" style="color:#a855f7"></i></div>
+          <div class="tool-card" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="300">
+            <div class="tool-icon-wrap"><i class="fas fa-draw-polygon" style="color:#2d3748"></i></div>
             <div class="tool-name">Illustrator</div>
             <div class="tool-sub">Vector Art</div>
           </div>
@@ -2330,12 +2176,12 @@
     <section class="contact-section" id="contact">
       <div class="contact-inner">
         <div class="contact-grid">
-          <div class="reveal">
+          <div data-aos="fade-right" data-aos-duration="700">
             <h2 class="contact-heading">Let's<br><span>Create</span><br>Together</h2>
             <p class="contact-sub">Open for freelance projects and creative collaborations. Let's build something you'll
               love.</p>
             <div class="contact-links">
-              <a class="contact-link-row" href="mailto:raibijju14@gmail.com">
+              <a class="contact-link-row" href="mailto:raibijju14@gmail.com" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
                 <div class="cl-icon"><i class="fas fa-envelope"></i></div>
                 <div class="cl-info">
                   <div class="cl-label">Email</div>
@@ -2343,7 +2189,7 @@
                 </div>
                 <i class="fas fa-arrow-up-right cl-arrow"></i>
               </a>
-              <a class="contact-link-row" href="tel:9763742622">
+              <a class="contact-link-row" href="tel:9763742622" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
                 <div class="cl-icon"><i class="fas fa-phone"></i></div>
                 <div class="cl-info">
                   <div class="cl-label">Phone</div>
@@ -2351,7 +2197,7 @@
                 </div>
                 <i class="fas fa-arrow-up-right cl-arrow"></i>
               </a>
-              <a class="contact-link-row" href="https://wa.me/9779763742622" target="_blank" rel="noopener">
+              <a class="contact-link-row" href="https://wa.me/9779763742622" target="_blank" rel="noopener" data-aos="fade-up" data-aos-duration="500" data-aos-delay="300">
                 <div class="cl-icon"><i class="fab fa-whatsapp"></i></div>
                 <div class="cl-info">
                   <div class="cl-label">WhatsApp</div>
@@ -2361,18 +2207,18 @@
               </a>
             </div>
           </div>
-          <div class="reveal reveal-delay-1">
+          <div data-aos="fade-left" data-aos-duration="700" data-aos-delay="200">
             <div class="social-panel">
               <div class="social-panel-title">Find me online</div>
               <div class="social-icons">
                 <a class="social-icon" href="https://www.instagram.com/b.jjurai" target="_blank" rel="noopener"
-                  title="Instagram"><i class="fab fa-instagram"></i></a>
+                  title="Instagram" data-aos="flip-left" data-aos-duration="500" data-aos-delay="300"><i class="fab fa-instagram"></i></a>
                 <a class="social-icon" href="https://www.facebook.com/share/1FWqSVcGVb/" target="_blank" rel="noopener"
-                  title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  title="Facebook" data-aos="flip-left" data-aos-duration="500" data-aos-delay="400"><i class="fab fa-facebook-f"></i></a>
                 <a class="social-icon" href="https://www.linkedin.com/in/bijju-rai-68b1b6342" target="_blank"
-                  rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                  rel="noopener" title="LinkedIn" data-aos="flip-left" data-aos-duration="500" data-aos-delay="500"><i class="fab fa-linkedin-in"></i></a>
               </div>
-              <div class="avail-badge">
+              <div class="avail-badge" data-aos="fade-up" data-aos-duration="500" data-aos-delay="600">
                 <div class="avail-dot"></div>
                 <div class="avail-text">
                   <strong>Available for Work</strong>
@@ -2385,7 +2231,7 @@
       </div>
     </section>
 
-    <footer>
+    <footer data-aos="fade-up" data-aos-duration="600">
       <div class="footer-inner">
         <div class="footer-copy">© 2025 <span>Bijay Rai</span> · UI/UX & Graphic Designer · Dharan, Nepal</div>
         <button class="footer-back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i
@@ -2404,8 +2250,18 @@
     <div class="lb-caption" id="lbCaption"></div>
   </div>
 
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     (function () {
+      // Initialize AOS
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100,
+        easing: 'ease-out-cubic'
+      });
+
       // ── LOADER ──
       window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hidden'), 2000));
 
@@ -2434,7 +2290,6 @@
         document.body.style.overflow = '';
       });
 
-      // Close mobile nav when clicking on a link
       const mobileNavLinks = mobileNav.querySelectorAll('a');
       mobileNavLinks.forEach(link => {
         link.addEventListener('click', function() {
@@ -2443,7 +2298,6 @@
         });
       });
 
-      // Close mobile nav when clicking outside
       mobileNav.addEventListener('click', function(e) {
         if (e.target === mobileNav) {
           mobileNav.classList.remove('open');
@@ -2538,10 +2392,17 @@
         slice.forEach((d, i) => {
           const card = document.createElement('div');
           card.className = 'project-card' + (i === 0 && d.featured ? ' featured' : '');
-          card.innerHTML = `<div class="project-img-wrap"><img src="${d.image}" alt="${d.title}" loading="lazy" onerror="this.src='https://placehold.co/600x400/f3e8ff/a855f7?text=${encodeURIComponent(d.title)}'"><div class="project-overlay"><div class="overlay-expand"><i class="fas fa-expand-alt"></i></div></div></div><div class="project-body"><div class="project-title">${d.title}</div><div class="project-cat">${d.cat}</div></div>`;
+          card.setAttribute('data-aos', 'fade-up');
+          card.setAttribute('data-aos-duration', '600');
+          card.setAttribute('data-aos-delay', (i * 100).toString());
+          card.innerHTML = `<div class="project-img-wrap"><img src="${d.image}" alt="${d.title}" loading="lazy" onerror="this.src='https://placehold.co/600x400/e2e8f0/2d3748?text=${encodeURIComponent(d.title)}'"><div class="project-overlay"><div class="overlay-expand"><i class="fas fa-expand-alt"></i></div></div></div><div class="project-body"><div class="project-title">${d.title}</div><div class="project-cat">${d.cat}</div></div>`;
           card.addEventListener('click', () => openLightbox(filtered, start + i));
           grid.appendChild(card);
         });
+        
+        // Refresh AOS for new elements
+        setTimeout(() => AOS.refresh(), 100);
+
         const wrap = document.getElementById('paginationWrap');
         if (totalPages <= 1) { wrap.innerHTML = `<div class="pg-info">${filtered.length} designs</div>`; return; }
         let html = `<button class="pg-btn pg-arrow" ${currentPage === 1 ? 'disabled' : ''} onclick="changePage(${currentPage - 1})"><i class="fas fa-chevron-left"></i></button>`;
@@ -2565,12 +2426,6 @@
         renderGrid();
       });
       renderGrid();
-
-      // Scroll reveal
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
       // Lightbox swipe
       let touchX = null;
