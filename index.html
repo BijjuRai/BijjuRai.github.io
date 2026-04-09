@@ -37,7 +37,8 @@
       box-sizing: border-box;
     }
 
-     :root {
+    /* Light Mode (Default) */
+    :root {
       --bg-light: #f9f5ff;
       --surface: #ffffff;
       --text-primary: #1e1127;
@@ -51,8 +52,34 @@
       --card-bg: #ffffff;
       --glass: rgba(255, 255, 255, 0.8);
       --shadow-sm: 0 8px 20px rgba(168, 85, 247, 0.08);
+      --shadow-lg: 0 25px 50px -12px rgba(168, 85, 247, 0.25);
+      --nav-bg: rgba(255, 255, 255, 0.9);
+      --footer-bg: rgba(255, 255, 255, 0.5);
+      --cloud-bg: rgba(255, 255, 255, 0.5);
+      --grid-color: rgba(168, 85, 247, 0.03);
     }
 
+    /* Dark Mode */
+    [data-theme="dark"] {
+      --bg-light: #0f0f13;
+      --surface: #1a1a24;
+      --text-primary: #f0eef4;
+      --text-secondary: #a89fb5;
+      --accent: #b87cff;
+      --accent-light: #d4a8ff;
+      --accent-muted: #9b5ae0;
+      --border-light: rgba(184, 124, 255, 0.2);
+      --border-soft: #2a2533;
+      --gold-accent: #c9a8ff;
+      --card-bg: #1e1e2a;
+      --glass: rgba(26, 26, 36, 0.8);
+      --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+      --nav-bg: rgba(26, 26, 36, 0.9);
+      --footer-bg: rgba(15, 15, 19, 0.8);
+      --cloud-bg: rgba(30, 30, 42, 0.5);
+      --grid-color: rgba(184, 124, 255, 0.04);
+    }
 
     html {
       scroll-behavior: smooth;
@@ -65,6 +92,7 @@
       overflow-x: hidden;
       position: relative;
       font-size: 15px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     h1,
@@ -84,6 +112,57 @@
       font-weight: 600;
     }
 
+    /* Theme Toggle Button */
+    .theme-toggle {
+      background: var(--surface);
+      border: 2px solid var(--border-soft);
+      color: var(--text-primary);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      margin-left: 8px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .theme-toggle:hover {
+      transform: rotate(15deg) scale(1.1);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .theme-toggle i {
+      transition: transform 0.3s ease;
+    }
+
+    /* Mobile theme toggle */
+    .mobile-theme-toggle {
+      background: var(--surface);
+      border: 2px solid var(--border-soft);
+      color: var(--text-primary);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .mobile-theme-toggle:hover {
+      transform: rotate(15deg) scale(1.1);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
     /* ───── CUTE ANIMATED BACKGROUND ───── */
     .cute-bg {
       position: fixed;
@@ -100,6 +179,11 @@
       animation: floatAround 20s infinite ease-in-out;
       opacity: 0.3;
       filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.05));
+    }
+
+    [data-theme="dark"] .floating-emoji {
+      opacity: 0.4;
+      filter: drop-shadow(0 4px 6px rgba(184, 124, 255, 0.15));
     }
 
     .floating-emoji:nth-child(1) {
@@ -205,7 +289,7 @@
 
     .cloud {
       position: absolute;
-      background: rgba(255, 255, 255, 0.5);
+      background: var(--cloud-bg);
       border-radius: 100px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
       backdrop-filter: blur(4px);
@@ -413,8 +497,8 @@
       z-index: 0;
       pointer-events: none;
       background-image:
-        linear-gradient(rgba(45, 55, 72, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(45, 55, 72, 0.02) 1px, transparent 1px);
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
       background-size: 80px 80px;
     }
 
@@ -450,14 +534,14 @@
     .loader-bar-track {
       width: 180px;
       height: 3px;
-      background: rgba(45, 55, 72, 0.2);
+      background: var(--border-soft);
       border-radius: 3px;
       overflow: hidden;
     }
 
     .loader-bar {
       height: 100%;
-      background: linear-gradient(90deg, var(--accent), #718096);
+      background: linear-gradient(90deg, var(--accent), var(--accent-light));
       border-radius: 3px;
       width: 0%;
       animation: loadProgress 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
@@ -486,7 +570,7 @@
     }
 
     nav.scrolled {
-      background: rgba(255, 255, 255, 0.9);
+      background: var(--nav-bg);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-soft);
       padding: 12px 0;
@@ -564,7 +648,7 @@
 
     .nav-link:hover {
       color: var(--accent);
-      background: rgba(45, 55, 72, 0.06);
+      background: var(--border-light);
     }
 
     .nav-cta {
@@ -591,7 +675,13 @@
     .nav-cta:hover {
       background: var(--accent-muted);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(45, 55, 72, 0.3);
+      box-shadow: 0 8px 24px rgba(168, 85, 247, 0.3);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     .mobile-toggle {
@@ -614,7 +704,7 @@
       position: fixed;
       inset: 0;
       z-index: 600;
-      background: rgba(255, 255, 255, 0.98);
+      background: var(--nav-bg);
       backdrop-filter: blur(20px);
       flex-direction: column;
       align-items: center;
@@ -666,7 +756,7 @@
     }
 
     .mobile-close:hover {
-      background: rgba(45, 55, 72, 0.1);
+      background: var(--border-light);
       color: var(--accent);
     }
 
@@ -702,7 +792,7 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: rgba(45, 55, 72, 0.08);
+      background: var(--border-light);
       border: 1.5px solid var(--border-light);
       padding: 7px 18px;
       border-radius: 100px;
@@ -740,7 +830,7 @@
       left: 0;
       right: 0;
       height: 10px;
-      background: rgba(45, 55, 72, 0.1);
+      background: var(--border-light);
       border-radius: 20px;
       z-index: -1;
     }
@@ -819,13 +909,13 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      box-shadow: 0 8px 24px rgba(45, 55, 72, 0.2);
+      box-shadow: 0 8px 24px rgba(168, 85, 247, 0.2);
     }
 
     .btn-primary:hover {
       background: var(--accent-muted);
       transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(45, 55, 72, 0.3);
+      box-shadow: 0 12px 32px rgba(168, 85, 247, 0.3);
     }
 
     .btn-outline {
@@ -846,7 +936,7 @@
 
     .btn-outline:hover {
       border-color: var(--accent);
-      background: rgba(45, 55, 72, 0.04);
+      background: var(--border-light);
       transform: translateY(-3px);
     }
 
@@ -866,7 +956,7 @@
       border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
       overflow: hidden;
       border: 3px solid var(--accent-light);
-      box-shadow: 0 25px 50px -12px rgba(45, 55, 72, 0.2);
+      box-shadow: var(--shadow-lg);
       animation: morphShape 8s ease-in-out infinite;
     }
 
@@ -906,7 +996,7 @@
       background: var(--surface);
       border-radius: 14px;
       padding: 14px 18px;
-      box-shadow: 0 20px 40px rgba(45, 55, 72, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
       border: 1.5px solid var(--border-soft);
       backdrop-filter: blur(8px);
       display: flex;
@@ -953,7 +1043,7 @@
       width: 36px;
       height: 36px;
       border-radius: 10px;
-      background: rgba(45, 55, 72, 0.08);
+      background: var(--border-light);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1031,7 +1121,7 @@
       padding: 20px 0;
       overflow: hidden;
       white-space: nowrap;
-      background: rgba(45, 55, 72, 0.02);
+      background: var(--border-light);
     }
 
     .marquee-track {
@@ -1167,14 +1257,14 @@
     .project-card:hover {
       transform: translateY(-10px);
       border-color: var(--accent-light);
-      box-shadow: 0 28px 48px rgba(45, 55, 72, 0.1);
+      box-shadow: 0 28px 48px rgba(0, 0, 0, 0.15);
     }
 
     .project-img-wrap {
       position: relative;
       overflow: hidden;
       aspect-ratio: 4/3;
-      background: #e2e8f0;
+      background: var(--border-soft);
     }
 
     .project-img-wrap img {
@@ -1191,7 +1281,7 @@
     .project-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(255, 255, 255, 0.95) 0%, transparent 60%);
+      background: linear-gradient(to top, var(--surface) 0%, transparent 60%);
       opacity: 0;
       transition: opacity 0.3s;
       display: flex;
@@ -1332,7 +1422,7 @@
     .tool-card:hover {
       border-color: var(--accent-light);
       transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 24px 48px rgba(45, 55, 72, 0.1);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.15);
     }
 
     .tool-icon-wrap {
@@ -1343,13 +1433,13 @@
       align-items: center;
       justify-content: center;
       font-size: 32px;
-      background: rgba(45, 55, 72, 0.04);
+      background: var(--border-light);
       border: 2px solid var(--border-soft);
       transition: background 0.3s;
     }
 
     .tool-card:hover .tool-icon-wrap {
-      background: rgba(45, 55, 72, 0.1);
+      background: var(--border-light);
       border-color: var(--accent-light);
     }
 
@@ -1461,7 +1551,8 @@
 
     .contact-heading span {
       color: transparent;
-      -webkit-text-stroke: 2px rgba(45, 55, 72, 0.4);
+      -webkit-text-stroke: 2px var(--accent);
+      opacity: 0.5;
     }
 
     .contact-sub {
@@ -1503,7 +1594,7 @@
       width: 48px;
       height: 48px;
       border-radius: 14px;
-      background: rgba(45, 55, 72, 0.04);
+      background: var(--border-light);
       border: 2px solid var(--border-soft);
       display: flex;
       align-items: center;
@@ -1564,7 +1655,7 @@
       height: 54px;
       border-radius: 18px;
       border: 2px solid var(--border-soft);
-      background: rgba(45, 55, 72, 0.02);
+      background: var(--border-light);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1586,7 +1677,7 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      background: rgba(45, 55, 72, 0.04);
+      background: var(--border-light);
       border: 2px solid var(--border-light);
       border-radius: 18px;
       padding: 18px 22px;
@@ -1623,7 +1714,7 @@
     footer {
       border-top: 2px solid var(--border-soft);
       padding: 32px 0;
-      background: rgba(255, 255, 255, 0.5);
+      background: var(--footer-bg);
     }
 
     .footer-inner {
@@ -1673,7 +1764,7 @@
       position: fixed;
       inset: 0;
       z-index: 8000;
-      background: rgba(248, 249, 250, 0.98);
+      background: var(--bg-light);
       backdrop-filter: blur(20px);
       display: none;
       align-items: center;
@@ -1798,7 +1889,8 @@
       }
 
       .nav-links,
-      .nav-cta {
+      .nav-cta,
+      .theme-toggle {
         display: none;
       }
 
@@ -1989,6 +2081,11 @@
     <a href="#tools" onclick="closeMobileNav()"><i class="fas fa-tools"></i> Tools</a>
     <a href="#contact" onclick="closeMobileNav()"><i class="fas fa-envelope"></i> Contact</a>
     <a href="https://sudamhub.com/" target="_blank" style="color:var(--accent)"><i class="fas fa-users"></i> Our Team ↗</a>
+    
+    <!-- Mobile Theme Toggle -->
+    <button class="mobile-theme-toggle" id="mobileThemeToggle">
+      <i class="fas fa-moon"></i>
+    </button>
   </div>
 
   <!-- Nav -->
@@ -2001,8 +2098,14 @@
         <a href="#tools" class="nav-link"><i class="fas fa-tools"></i> Tools</a>
         <a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
       </div>
-      <div style="display:flex;align-items:center;gap:12px">
+      <div class="nav-right">
         <a class="nav-cta" href="https://sudamhub.com/" target="_blank"><i class="fas fa-users"></i> Our Team</a>
+        
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle" id="themeToggle">
+          <i class="fas fa-moon"></i>
+        </button>
+        
         <button class="mobile-toggle" id="mobileToggle"><i class="fas fa-bars"></i></button>
       </div>
     </div>
@@ -2154,17 +2257,17 @@
         </div>
         <div class="tools-grid-row">
           <div class="tool-card" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="100">
-            <div class="tool-icon-wrap"><i class="fab fa-figma" style="color:#2d3748"></i></div>
+            <div class="tool-icon-wrap"><i class="fab fa-figma"></i></div>
             <div class="tool-name">Figma</div>
             <div class="tool-sub">UI/UX Design</div>
           </div>
           <div class="tool-card" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="200">
-            <div class="tool-icon-wrap"><i class="fas fa-palette" style="color:#2d3748"></i></div>
+            <div class="tool-icon-wrap"><i class="fas fa-palette"></i></div>
             <div class="tool-name">Canva</div>
             <div class="tool-sub">Visual Design</div>
           </div>
           <div class="tool-card" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="300">
-            <div class="tool-icon-wrap"><i class="fas fa-draw-polygon" style="color:#2d3748"></i></div>
+            <div class="tool-icon-wrap"><i class="fas fa-draw-polygon"></i></div>
             <div class="tool-name">Illustrator</div>
             <div class="tool-sub">Vector Art</div>
           </div>
@@ -2254,6 +2357,43 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     (function () {
+      // Theme Toggle Functionality
+      const themeToggle = document.getElementById('themeToggle');
+      const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+      const htmlElement = document.documentElement;
+      
+      // Check for saved theme preference or default to 'light'
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      htmlElement.setAttribute('data-theme', savedTheme);
+      updateThemeIcons(savedTheme);
+      
+      function updateThemeIcons(theme) {
+        const icon = theme === 'dark' ? 'fa-sun' : 'fa-moon';
+        if (themeToggle) {
+          themeToggle.innerHTML = `<i class="fas ${icon}"></i>`;
+        }
+        if (mobileThemeToggle) {
+          mobileThemeToggle.innerHTML = `<i class="fas ${icon}"></i>`;
+        }
+      }
+      
+      function toggleTheme() {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        htmlElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcons(newTheme);
+      }
+      
+      if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+      }
+      
+      if (mobileThemeToggle) {
+        mobileThemeToggle.addEventListener('click', toggleTheme);
+      }
+
       // Initialize AOS
       AOS.init({
         duration: 800,
