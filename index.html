@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover, shrink-to-fit=no" />
   <title>Bijay Rai | UI/UX & Graphic Designer Portfolio</title>
   <meta name="description"
     content="Bijay Rai - Professional UI/UX and Graphic Designer with 2+ years experience. Explore creative portfolio featuring branding, visual identity, and digital design projects." />
@@ -43,7 +43,7 @@
       --card-bg: #ffffff;
       --shadow-sm: 0 8px 20px rgba(168, 85, 247, 0.08);
       --shadow-lg: 0 25px 50px -12px rgba(168, 85, 247, 0.25);
-      --nav-bg: rgba(255, 255, 255, 0.9);
+      --nav-bg: rgba(255, 255, 255, 0.98);
       --footer-bg: var(--surface);
       --cloud-bg: rgba(255, 255, 255, 0.5);
       --grid-color: rgba(168, 85, 247, 0.03);
@@ -62,13 +62,17 @@
       --card-bg: #1e1e2a;
       --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.3);
       --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-      --nav-bg: rgba(26, 26, 36, 0.9);
+      --nav-bg: rgba(26, 26, 36, 0.98);
       --footer-bg: #1a1a24;
       --cloud-bg: rgba(30, 30, 42, 0.5);
       --grid-color: rgba(184, 124, 255, 0.04);
     }
 
-    html { scroll-behavior: smooth; }
+    html { 
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+    }
 
     body {
       font-family: 'Quicksand', sans-serif;
@@ -78,6 +82,8 @@
       position: relative;
       font-size: 15px;
       transition: background-color 0.5s ease, color 0.5s ease;
+      width: 100%;
+      min-height: 100vh;
     }
 
     h1, h2, h3, h4, .nav-logo, .loader-name, .section-title,
@@ -97,6 +103,7 @@
       padding: 80px 24px;
       position: relative;
       overflow: hidden;
+      width: 100%;
     }
 
     .splash-wrapper {
@@ -108,6 +115,7 @@
       justify-content: center;
       position: relative;
       z-index: 5;
+      width: 100%;
     }
 
     /* Floating Bubbles with Icons */
@@ -592,6 +600,8 @@
       align-items: center;
       justify-content: center;
       gap: 24px;
+      width: 100%;
+      height: 100vh;
     }
 
     .mobile-nav.open { display: flex; }
@@ -625,6 +635,7 @@
       justify-content: center;
       border-radius: 50%;
       transition: all 0.4s ease;
+      z-index: 10;
     }
 
     .mobile-close:hover { background: var(--border-light); color: var(--accent); }
@@ -639,6 +650,7 @@
       align-items: center;
       padding: 60px 0;
       position: relative;
+      width: 100%;
     }
 
     .hero-inner {
@@ -649,6 +661,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 50px;
       align-items: center;
+      width: 100%;
     }
 
     .hero-badge {
@@ -913,12 +926,13 @@
     }
 
     /* Section Shared */
-    .section { padding: 60px 0; }
+    .section { padding: 60px 0; width: 100%; }
 
     .section-wrap {
       max-width: 1400px;
       margin: 0 auto;
       padding: 0 48px;
+      width: 100%;
     }
 
     .section-header {
@@ -1410,18 +1424,18 @@
     }
 
     @media (max-width: 860px) {
-      .nav-inner { padding: 0 24px; }
+      .nav-inner { padding: 0 20px; }
       .nav-links, .nav-cta, .theme-toggle { display: none; }
       .mobile-toggle { display: block; }
 
-      #splash { min-height: 90vh; padding: 60px 20px; }
+      #splash { min-height: 90vh; padding: 60px 16px; }
       .bubble:nth-child(1) { width: 50px; height: 50px; font-size: 20px; }
       .bubble:nth-child(3) { width: 60px; height: 60px; font-size: 24px; }
       .bubble:nth-child(8) { width: 55px; height: 55px; font-size: 22px; }
 
       .hero-inner {
         grid-template-columns: 1fr;
-        padding: 0 24px;
+        padding: 0 20px;
         text-align: center;
         gap: 35px;
       }
@@ -1434,14 +1448,14 @@
       .hero-badge { margin-left: auto; margin-right: auto; }
       .hero-title { justify-content: center; }
 
-      .section-wrap { padding: 0 24px; }
-      .contact-inner { padding: 0 24px; }
+      .section-wrap { padding: 0 20px; }
+      .contact-inner { padding: 0 20px; }
       .contact-grid { grid-template-columns: 1fr; gap: 35px; }
-      .about-inner { grid-template-columns: 1fr; padding: 0 24px; gap: 35px; }
+      .about-inner { grid-template-columns: 1fr; padding: 0 20px; gap: 35px; }
       .projects-grid { grid-template-columns: 1fr; }
       .project-card.featured { grid-column: span 1; }
 
-      .footer-inner { padding: 0 24px; flex-direction: column; text-align: center; gap: 16px; }
+      .footer-inner { padding: 0 20px; flex-direction: column; text-align: center; gap: 16px; }
 
       .floating-card-1 { right: -5px; }
       .floating-card-2 { left: -15px; }
@@ -1449,6 +1463,8 @@
       .splash-name { font-size: clamp(42px, 12vw, 80px); }
       .splash-greeting { font-size: 18px; }
       .splash-title { font-size: 16px; }
+
+      .mobile-nav a { font-size: 24px; }
     }
 
     @media (max-width: 560px) {
@@ -1466,6 +1482,7 @@
       .splash-greeting { font-size: 16px; }
       .splash-title { font-size: 14px; }
       .section { padding: 40px 0; }
+      .mobile-nav a { font-size: 22px; }
     }
   </style>
 </head>
@@ -1543,7 +1560,6 @@
 
     <!-- Splash Section -->
     <section id="splash">
-      <!-- Floating Bubbles with Icons -->
       <div class="floating-bubbles">
         <div class="bubble"><i class="fas fa-paint-brush"></i></div>
         <div class="bubble"><i class="fas fa-code"></i></div>
@@ -1565,7 +1581,7 @@
         
         <div class="splash-cta" id="splashCta">
           <a href="#work" class="btn-primary"><i class="fas fa-arrow-right"></i> My Latest Works</a>
-          <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><i class="fas fa-envelope"></i> Let’s connect</button>
+          <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><i class="fas fa-envelope"></i> Let's connect</button>
         </div>
       </div>
       <div class="splash-scroll-hint" id="splashHint">
